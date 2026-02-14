@@ -104,4 +104,5 @@ class SqlLexer:
 # Helper function to expose the lexer easily
 def get_lexer():
     l = SqlLexer()
-    return l.build()
+    l.build()
+    return l

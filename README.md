@@ -20,7 +20,13 @@ In this stage, we implement the Lexer (Tokenizer) using `ply`.
    pip install -r requirements.txt
    ```
 
-2. Run tests:
+2. Run the interactive CLI:
+   ```bash
+   python main.py
+   ```
+   Follow the on-screen menu to select a mode (Lexer, Parser, or Full Pipeline) and enter your SQL queries.
+
+3. Run tests:
    ```bash
    pytest
    ```
