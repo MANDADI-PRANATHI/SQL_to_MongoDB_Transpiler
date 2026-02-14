@@ -60,10 +60,13 @@ def get_user_schema():
         print(f"Schema Error: {e}")
         return None
 
+from sql_to_mongo_transpiler.codegen.mongodb_generator import MongoDBGenerator
+
 def run_full_pipeline(sql, schema):
     print(f"\n[Full Pipeline] Processing: {sql}")
     parser = get_parser()
     analyzer = SemanticAnalyzer(schema)
+    generator = MongoDBGenerator()
     
     try:
         # 1. Parse
@@ -73,8 +76,11 @@ def run_full_pipeline(sql, schema):
         analyzer.validate_query(ast)
         
         print("Query is semantically valid.")
-        print("AST Output:")
-        print(ast)
+        
+        # 3. Code Generation
+        mongo_query = generator.generate(ast)
+        print("MongoDB Query:")
+        print(mongo_query)
         
     except SyntaxError as e:
         print(f"Syntax Error: {e}")
