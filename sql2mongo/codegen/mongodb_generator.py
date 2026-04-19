@@ -1,4 +1,4 @@
-from sql_to_mongo_transpiler.ast.nodes import SelectQuery, LogicalCondition, Comparison,OrderByItem,Aggregate
+from sql2mongo.ast.nodes import SelectQuery, LogicalCondition, Comparison,OrderByItem,Aggregate
 import json
 
 class MongoDBGenerator:
@@ -80,7 +80,7 @@ class MongoDBGenerator:
             "pipeline": pipeline
             }
     def _contains_in_subquery(self, node):
-        from sql_to_mongo_transpiler.ast.nodes import LogicalCondition, Comparison
+        from sql2mongo.ast.nodes import LogicalCondition, Comparison
 
         if isinstance(node, Comparison):
             return node.operator == "IN_SUBQUERY"

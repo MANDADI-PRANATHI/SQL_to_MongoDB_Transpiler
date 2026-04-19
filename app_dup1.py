@@ -1,8 +1,8 @@
 
 from flask import Flask, request, jsonify, render_template
-from sql_to_mongo_transpiler.codegen.mongodb_generator import MongoDBGenerator
-from sql_to_mongo_transpiler.parser.sql_parser import get_parser
-from sql_to_mongo_transpiler.semantic.semantic_analyzer import SemanticAnalyzer
+from sql2mongo.codegen.mongodb_generator import MongoDBGenerator
+from sql2mongo.parser.sql_parser import get_parser
+from sql2mongo.semantic.semantic_analyzer import SemanticAnalyzer
 from pymongo import MongoClient
 import psycopg2
 import json

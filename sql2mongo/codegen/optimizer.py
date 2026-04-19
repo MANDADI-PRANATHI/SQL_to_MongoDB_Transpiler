@@ -53,7 +53,7 @@ class MongoOptimizer:
         try:
             filter_doc = self._safe_eval(filter_str)
         except Exception as e:
-            print("⚠️ Optimizer parse failed:", e)
+            # print("⚠️ Optimizer parse failed:", e)
             return query
 
         optimized = self._optimize_filter(filter_doc)

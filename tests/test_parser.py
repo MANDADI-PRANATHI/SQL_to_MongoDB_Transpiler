@@ -5,8 +5,8 @@ import os
 # Add the project root to the python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from sql_to_mongo_transpiler.parser.sql_parser import get_parser
-from sql_to_mongo_transpiler.ast.nodes import SelectQuery, LogicalCondition, Comparison
+from sql2mongo.parser.sql_parser import get_parser
+from sql2mongo.ast.nodes import SelectQuery, LogicalCondition, Comparison
 
 @pytest.fixture
 def parser():

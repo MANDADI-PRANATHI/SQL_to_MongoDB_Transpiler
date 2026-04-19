@@ -5,7 +5,7 @@ import os
 # Add the project root to the python path to import the module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from sql_to_mongo_transpiler.lexer.sql_lexer import SqlLexer, LexerError
+from sql2mongo.lexer.sql_lexer import SqlLexer, LexerError
 
 @pytest.fixture
 def lexer():

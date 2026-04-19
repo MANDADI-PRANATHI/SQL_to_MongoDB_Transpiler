@@ -131,7 +131,7 @@ The transpiler is designed to support the following subset of SQL:
 ## How to Run
 Before cloning create venv environment and enter in it.as,
 ```
-python3 -m install venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 1. **Clone the repository:**
@@ -147,4 +147,19 @@ pip install ply
  To test the lexer implementated until now,in the sql-to-mongodb-transpiler folder
 ```
 python3 main.py
+cd SQL_to_MongoDB_Transpiler-main
+```
+
+2. **Install the CLI Tool globally via pip:**
+```bash
+pip install .
+```
+
+3. **Run the tool using the mapped console command:**
+```bash
+sql2mongo --schema custom_schema.json --query "SELECT * FROM users;" --pretty
+```
+You can also use the interactive shell:
+```bash
+sql2mongo shell --schema custom_schema.json
 ```

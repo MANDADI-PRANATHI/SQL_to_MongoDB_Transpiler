@@ -28,4 +28,8 @@ INSERT INTO orders (order_id, user_id, amount) VALUES
 (101, 1, 500),
 (102, 2, 300),
 (103, 1, 700),
+<<<<<<< HEAD
 (104, 3, 200);
+=======
+(104, 3, 200);
+>>>>>>> f58b024 (Built sql2mongo as a command in terminal)

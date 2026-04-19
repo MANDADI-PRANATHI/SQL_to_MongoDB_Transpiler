@@ -1,6 +1,6 @@
 import ply.yacc as yacc
-from sql_to_mongo_transpiler.lexer.sql_lexer import SqlLexer
-from sql_to_mongo_transpiler.ast.nodes import SelectQuery, LogicalCondition, Comparison,OrderByItem,Aggregate
+from sql2mongo.lexer.sql_lexer import SqlLexer
+from sql2mongo.ast.nodes import SelectQuery, LogicalCondition, Comparison,OrderByItem,Aggregate
 
 class SqlParser:
     def __init__(self):
@@ -174,7 +174,7 @@ class SqlParser:
         '''
         comparison : identifier IN LPAREN query_no_semicolon RPAREN
         '''
-        print("DEBUG: subquery rule triggered")
+        # print("DEBUG: subquery rule triggered")
         p[0] = Comparison(
             identifier=p[1],
             operator="IN_SUBQUERY",

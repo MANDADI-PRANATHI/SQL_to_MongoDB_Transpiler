@@ -1,11 +1,11 @@
 import sys
 import os
 import json
-from sql_to_mongo_transpiler.lexer.sql_lexer import get_lexer, LexerError
-from sql_to_mongo_transpiler.parser.sql_parser import get_parser
-from sql_to_mongo_transpiler.semantic.semantic_analyzer import SemanticAnalyzer, SemanticError
-from sql_to_mongo_transpiler.codegen.optimizer import MongoOptimizer
-from sql_to_mongo_transpiler.schema_loader import load_schema, SchemaError
+from sql2mongo.lexer.sql_lexer import get_lexer, LexerError
+from sql2mongo.parser.sql_parser import get_parser
+from sql2mongo.semantic.semantic_analyzer import SemanticAnalyzer, SemanticError
+from sql2mongo.codegen.optimizer import MongoOptimizer
+from sql2mongo.schema_loader import load_schema, SchemaError
 import psycopg2
 from pymongo import MongoClient
 import re
@@ -140,7 +140,7 @@ def get_user_schema():
         print(f"Schema Error: {e}")
         return None
 
-from sql_to_mongo_transpiler.codegen.mongodb_generator import MongoDBGenerator
+from sql2mongo.codegen.mongodb_generator import MongoDBGenerator
 
 def run_full_pipeline(sql, schema):
     print(f"\n[Full Pipeline] Processing: {sql}")

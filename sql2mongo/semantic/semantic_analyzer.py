@@ -1,4 +1,4 @@
-from sql_to_mongo_transpiler.ast.nodes import SelectQuery, LogicalCondition, Comparison,Aggregate
+from sql2mongo.ast.nodes import SelectQuery, LogicalCondition, Comparison,Aggregate
 
 class SemanticError(Exception):
     pass
@@ -24,7 +24,7 @@ class SemanticAnalyzer:
         if hasattr(node, "joins") and node.joins:
             for join in node.joins:
                 tables.append(join["table"])
-        print("tables:",tables)
+        # print("tables:",tables)
         if len(tables) > 2:
             raise SemanticError("Only 2-table JOIN supported currently")
         for t in tables:
@@ -211,7 +211,11 @@ class SemanticAnalyzer:
             return self.extract_join_condition(condition.right)
         return None
     def split_join_and_filter(self, condition):
+<<<<<<< HEAD
         from sql_to_mongo_transpiler.ast.nodes import LogicalCondition, Comparison
+=======
+        from sql2mongo.ast.nodes import LogicalCondition, Comparison
+>>>>>>> f58b024 (Built sql2mongo as a command in terminal)
         if isinstance(condition, LogicalCondition):
             left_join, left_filter = self.split_join_and_filter(condition.left)
             right_join, right_filter = self.split_join_and_filter(condition.right)

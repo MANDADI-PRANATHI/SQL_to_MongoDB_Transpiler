@@ -6,8 +6,8 @@ import json
 # Add the project root to the python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from sql_to_mongo_transpiler.parser.sql_parser import get_parser
-from sql_to_mongo_transpiler.codegen.mongodb_generator import MongoDBGenerator
+from sql2mongo.parser.sql_parser import get_parser
+from sql2mongo.codegen.mongodb_generator import MongoDBGenerator
 
 @pytest.fixture
 def parser():
