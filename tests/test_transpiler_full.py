@@ -226,3 +226,36 @@ def test_optimizer_range_merge(transpiler):
     # wait: The optimizer script merges ">" values using min() across OR bounds.
     res = transpiler("SELECT * FROM users WHERE age > 20 OR age > 30;")
     assert res["filter"] == {"age": {"$gt": 20}}
+
+from sql2mongo.semantic.semantic_analyzer import SemanticError
+
+# ----------------- NEGATIVE / ERROR HANDLING TESTS -----------------
+def test_error_table_not_found(transpiler):
+    with pytest.raises(SemanticError, match="Table 'invalid_table' does not exist"):
+        transpiler("SELECT * FROM invalid_table;")
+
+def test_error_column_not_found(transpiler):
+    with pytest.raises(SemanticError, match="Column 'non_existent' not found in any table"):
+        transpiler("SELECT non_existent FROM users;")
+
+def test_error_type_mismatch(transpiler):
+    with pytest.raises(SemanticError, match="Type mismatch for column 'age'. Expected int but got string."):
+        transpiler("SELECT * FROM users WHERE age = 'twenty';")
+
+def test_error_invalid_group_by(transpiler):
+    with pytest.raises(SemanticError, match="Column 'age' must appear in GROUP BY or be aggregated"):
+        transpiler("SELECT city, age FROM users GROUP BY city;")
+
+def test_error_having_without_group_by(transpiler):
+    with pytest.raises(SemanticError, match="HAVING clause requires GROUP BY"):
+        transpiler("SELECT city FROM users HAVING SUM(balance) > 100;")
+
+def test_error_join_type_mismatch(transpiler):
+    with pytest.raises(SemanticError, match="Type mismatch in JOIN"):
+        # Users.name (string) = orders.amount (float)
+        transpiler("SELECT * FROM users JOIN orders ON users.name = orders.amount;")
+
+def test_syntax_error(transpiler):
+    with pytest.raises(SyntaxError):
+        transpiler("SELECT * FROM users WHERE (age > 20);") # Parenthesis not supported
+

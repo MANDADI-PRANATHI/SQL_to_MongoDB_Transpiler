@@ -48,6 +48,7 @@ class SemanticAnalyzer:
         if hasattr(node, "joins") and node.joins:
             for join in node.joins:
                 tables.append(join["table"])
+                self.validate_condition(join["condition"], tables)
         if isinstance(node.table, list) and len(node.table) == 2:
             if not node.where:
                 raise SemanticError("JOIN condition required for multiple tables")
@@ -79,10 +80,11 @@ class SemanticAnalyzer:
                     raise SemanticError(f"Column '{col}' does not exist in table '{table_name}'")
             # validate SELECT columns follow SQL rules
             for col in node.columns:
-                if isinstance(col, str):
-                    if col not in node.group_by:
+                col_name = col.get("column") if isinstance(col, dict) else col
+                if isinstance(col_name, str):
+                    if col_name not in node.group_by:
                         raise SemanticError(
-                                f"Column '{col}' must appear in GROUP BY or be aggregated")
+                                f"Column '{col_name}' must appear in GROUP BY or be aggregated")
 
     def validate_columns(self, columns, table_name,node):
         table_schema = self.schema[table_name]
