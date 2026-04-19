@@ -184,19 +184,22 @@ class MongoOptimizer:
         except:
             return query
 
-        #  Move $match to front
+        new_pipeline = self._optimize_pipeline(pipeline)
+
+        return f"db.{collection}.aggregate({new_pipeline})"
+
+    def _optimize_pipeline(self, pipeline):
         match_stages = []
         rest = []
-
         for stage in pipeline:
             if "$match" in stage:
                 match_stages.append(stage)
             else:
                 rest.append(stage)
+        return match_stages + rest
 
-        new_pipeline = match_stages + rest
-
-        return f"db.{collection}.aggregate({new_pipeline})"
+    def _rebuild_aggregate_query(self, mongo_data):
+        return f"db.{mongo_data['collection']}.aggregate({mongo_data['pipeline']})"
 
 
     # ---------------- SAFE PARSER ----------------
