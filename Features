@@ -1,0 +1,31 @@
+# Supported SQL Features
+
+Our SQL-to-MongoDB Transpiler supports a robust subset of SQL designed for powerful document querying and data aggregation.
+
+## Core Keywords
+- `SELECT` (Including specific columns, functions, and `*`)
+- `FROM` (Multiple tables implicitly joined or explicitly joined)
+- `WHERE` (Filtering logic)
+- `GROUP BY` (Single and Multiple columns)
+- `HAVING` (Post-aggregation filtering)
+- `ORDER BY` (Sorting numerically, alphabetically, and by aggregations like `COUNT(*)`)
+- `LIMIT` (Result count limits)
+
+## Logical & Comparison Operators
+- **Comparisons**: `=`, `!=`, `<`, `>`, `<=`, `>=`
+- **Between**: `BETWEEN ... AND ...`
+- **Inclusion**: `IN (...)`
+- **Logic**: `AND`, `OR`
+
+## Aggregations
+- `COUNT(...)` (including `COUNT(*)`)
+- `SUM(...)`
+- `AVG(...)`
+- `MIN(...)`
+- `MAX(...)`
+
+## Advanced Patterns
+- **Joins**: Implicit (comma-separated) and Explicit (`JOIN ... ON ...`) converting into MongoDB `$lookup`.
+- **Subqueries**: Supported within `IN (...)` conditions mapping uniquely into document filters.
+- **Batched Execution**: Pass fully formed arrays split directly by Semicolons `;`.
+- **Multi-line Flexibility**: Supports raw `\n` formats and line-comments natively.
