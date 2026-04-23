@@ -86,7 +86,6 @@ If you just want to get up and running without manually configuring anything, us
 ### Prerequisites
 - `make` installed (`sudo apt install make`)
 - `python3` and `python3-venv` installed
-- `mongod` available on your system
 
 ### Steps
 
@@ -127,6 +126,7 @@ make help
 
 **6. To clean up everything:**
 ```bash
+deactivate
 make clean
 ```
 ---
