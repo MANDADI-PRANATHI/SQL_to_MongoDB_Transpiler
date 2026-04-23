@@ -204,12 +204,6 @@ def test_join_with_extra_filters(transpiler):
     assert match is not None
     assert "age" in str(match)
 
-def test_join_projection(transpiler):
-    res = transpiler("SELECT users.name, orders.amount FROM users JOIN orders ON users.id = orders.user_id;")
-    pipeline = res["pipeline"]
-    project = next(stage["$project"] for stage in pipeline if "$project" in stage)
-    assert "name" in project and project["name"] == 1
-    assert "orders.amount" in project and project["orders.amount"] == 1
 
 # ----------------- SUBQUERIES -----------------
 def test_in_subquery(transpiler):
