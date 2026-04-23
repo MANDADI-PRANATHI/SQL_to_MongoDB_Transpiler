@@ -2,6 +2,21 @@
 Convert SQL queries into MongoDB queries automatically.
 
 ---
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Folder Structure](#folder-structure)
+- [1. Running from Source Code (For Developers)](#1-running-from-source-code-for-developers)
+- [2. Using the Transpiler Directly (For End-Users)](#2-using-the-transpiler-directly-for-end-users)
+- [Testing](#testing)
+- [Example Queries](#example-queries)
+- [Deployment](#deployment)
+- [Future Improvements](#future-improvements)
+- [License / Author](#license--author)
+
+---
+
 
 ## Project Overview
 
