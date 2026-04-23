@@ -7,6 +7,7 @@ Convert SQL queries into MongoDB queries automatically.
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Folder Structure](#folder-structure)
+- [0.Quick Start — Get Running in Minutes](#0-quick-start-recommended)
 - [1. Running from Source Code (For Developers)](#1-running-from-source-code-for-developers)
 - [2. Using the Transpiler Directly (For End-Users)](#2-using-the-transpiler-directly-for-end-users)
 - [Testing](#testing)
@@ -77,6 +78,57 @@ app.py           # Verification and Correctness Tool comparing DB outputs
 Features         # Supported SQL mapping documentation
 ```
 
+---
+## 0. Quick Start from source code (Recommended)
+
+If you just want to get up and running without manually configuring anything, use the Makefile. It handles everything for you.
+
+### Prerequisites
+- `make` installed (`sudo apt install make`)
+- `python3` and `python3-venv` installed
+- `mongod` available on your system
+
+### Steps
+
+**1. Clone the Repository**
+```bash
+git clone https://github.com/MANDADI-PRANATHI/SQL_to_MongoDB_Transpiler.git
+cd SQL_to_MongoDB_Transpiler
+```
+
+**2. Run Full Setup**
+```bash
+make setup
+```
+This single command will:
+- Install system dependencies (python3-venv, postgresql)
+- Create and activate a virtual environment
+- Install all Python dependencies from `requirements.txt`
+- Start PostgreSQL and load the database schema
+- Start MongoDB and seed collections
+
+**3. Activate the Virtual Environment**
+```bash
+source venv/bin/activate
+```
+
+**4. You're ready. Pick what you want to run:**
+```bash
+make webapp     # FastAPI Web UI      → http://127.0.0.1:8000
+make verify     # Flask Verification  → http://127.0.0.1:5000
+make run        # CLI Transpiler
+make test       # Run test suite
+```
+
+**5. To see all available commands:**
+```bash
+make help
+```
+
+**6. To clean up everything:**
+```bash
+make clean
+```
 ---
 
 ## 1. Running from Source Code (For Developers)
