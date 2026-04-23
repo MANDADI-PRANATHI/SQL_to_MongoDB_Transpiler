@@ -7,7 +7,7 @@ Convert SQL queries into MongoDB queries automatically.
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Folder Structure](#folder-structure)
-- [0.Quick Start — Get Running in Minutes](#0-quick-start-recommended)
+- [0.Quick Start — Get Running in Minutes](#0-quick-start-from-source-code)
 - [1. Running from Source Code (For Developers)](#1-running-from-source-code-for-developers)
 - [2. Using the Transpiler Directly (For End-Users)](#2-using-the-transpiler-directly-for-end-users)
 - [Testing](#testing)
@@ -79,7 +79,7 @@ Features         # Supported SQL mapping documentation
 ```
 
 ---
-## 0. Quick Start from source code (Recommended)
+## 0. Quick Start from source code 
 
 If you just want to get up and running without manually configuring anything, use the Makefile. It handles everything for you.
 
